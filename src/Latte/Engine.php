@@ -30,28 +30,28 @@ class Engine implements EngineInterface
 	public $onCompile = [];
 
 	/** @var Parser */
-	private $parser;
+	protected $parser;
 
 	/** @var Compiler */
-	private $compiler;
+	protected $compiler;
 
 	/** @var ILoader */
-	private $loader;
+	protected $loader;
 
 	/** @var Runtime\FilterExecutor */
-	private $filters;
+	protected $filters;
 
 	/** @var array */
-	private $providers = [];
+	protected $providers = [];
 
 	/** @var string */
-	private $contentType = self::CONTENT_HTML;
+	protected $contentType = self::CONTENT_HTML;
 
 	/** @var string */
-	private $tempDirectory;
+	protected $tempDirectory;
 
 	/** @var bool */
-	private $autoRefresh = TRUE;
+	protected $autoRefresh = TRUE;
 
 
 
@@ -155,7 +155,7 @@ class Engine implements EngineInterface
 	/**
 	 * @return void
 	 */
-	private function loadTemplate($name)
+	protected function loadTemplate($name)
 	{
 		if (!$this->tempDirectory) {
 			$code = $this->compile($name);
@@ -206,7 +206,7 @@ class Engine implements EngineInterface
 	 * @param  string
 	 * @return bool
 	 */
-	private function isExpired($file, $name)
+	protected function isExpired($file, $name)
 	{
 		return $this->autoRefresh && $this->getLoader()->isExpired($name, (int) @filemtime($file)); // @ - file may not exist
 	}
