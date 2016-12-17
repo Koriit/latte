@@ -11,7 +11,7 @@ namespace Latte;
 /**
  * Templating engine Latte.
  */
-class Engine
+class Engine implements EngineInterface
 {
 	use Strict;
 
